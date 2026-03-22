@@ -18,6 +18,13 @@
         .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .text-gradient { background: linear-gradient(to right, #60a5fa, #3b82f6, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
+        /* Highlight Style for the 2% Bonus */
+        .bonus-highlight {
+            background-color: rgba(59, 130, 246, 0.2);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
@@ -103,13 +110,17 @@
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="text-5xl mb-6">💎</div>
                 <h3 class="text-2xl font-bold mb-4">Monthly Payday</h3>
-                <p class="text-slate-400 leading-relaxed">Holders receive a 2% bonus from our locked reserve every 30 days.</p>
+                <p class="text-slate-400 leading-relaxed">
+                    Holders receive a <span class="bonus-highlight"><b><u>2% bonus</u></b></span> from our locked reserve every 30 days.
+                </p>
             </div>
+            
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-5xl mb-6">🛡️</div>
                 <h3 class="text-2xl font-bold mb-4">10% Sell Tax</h3>
                 <p class="text-slate-400 leading-relaxed">5% Reflections | 2% Burn | 3% Community Marketing Fund</p>
             </div>
+            
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="text-5xl mb-6">🔒</div>
                 <h3 class="text-2xl font-bold mb-4">Rug-Proof</h3>
@@ -120,16 +131,16 @@
 
     <footer class="py-16 text-center text-slate-500 border-t border-slate-900 bg-slate-950/50">
         <div class="text-xl font-black mb-4">LOYAL<span class="text-blue-500">HANDS</span></div>
-        <p class="mb-2">© 2026 LoyalHands ($LOHA). All Rights Reserved.</p>
-        <p class="text-xs text-slate-600 px-4 max-w-xl mx-auto italic">Note: Market data displayed is for demonstration purposes. Always conduct your own research before investing.</p>
+        <p class="mb-4">© 2026 LoyalHands ($LOHA). All Rights Reserved.</p>
+        <p class="text-xs text-slate-600 px-4 max-w-2xl mx-auto italic">
+            Disclaimer: This is not financial or legal advice. Investing in cryptocurrencies involves significant risk. Always conduct your own thorough research before making any investment decisions.
+        </p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Animations
         AOS.init({ duration: 1000, once: true, offset: 50 });
 
-        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -143,7 +154,6 @@
         menuBtn.onclick = toggleMenu;
         closeBtn.onclick = toggleMenu;
 
-        // Close menu when a link is clicked
         mobileLinks.forEach(link => {
             link.onclick = toggleMenu;
         });
