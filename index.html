@@ -36,6 +36,11 @@
             transform: scale(1);
         }
 
+        /* Bullet Point Styling */
+        .token-list { text-align: left; display: inline-block; }
+        .token-list li { margin-bottom: 8px; position: relative; padding-left: 20px; }
+        .token-list li::before { content: "•"; color: #3b82f6; position: absolute; left: 0; font-weight: bold; }
+
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
@@ -125,7 +130,7 @@
                     <div class="text-5xl mb-6">💎</div>
                     <h3 class="text-2xl font-bold mb-4">Monthly Payday</h3>
                     <p class="text-slate-400 leading-relaxed text-lg">
-                        Every 30 days, Loyalty is rewarded. Holders receive a <span class="text-white"><b><u>2% bonus</u></b></span> from our locked reserve.
+                        Every 30 days, Loyalty is rewarded. Holders receive a <span class="text-white font-bold underline">2% bonus</span> from our locked reserve.
                     </p>
                 </div>
                 <button onclick="openModal()" class="mt-8 text-blue-400 font-bold hover:text-blue-300 transition-all underline decoration-blue-500/50">More Info</button>
@@ -134,8 +139,12 @@
             <div class="glass p-10 rounded-[2.5rem] text-center flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                 <div>
                     <div class="text-5xl mb-6">🛡️</div>
-                    <h3 class="text-2xl font-bold mb-4">10% Sell Tax</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">5% Reflections (for holders) | 2% Burn | 3% Marketing Fund</p>
+                    <h3 class="text-2xl font-bold mb-6">10% Sell Tax</h3>
+                    <ul class="token-list text-slate-400 text-lg">
+                        <li>5% Reflections (for holders)</li>
+                        <li>2% Automatic Burn</li>
+                        <li>3% Marketing Fund</li>
+                    </ul>
                 </div>
                 <button onclick="openModal()" class="mt-8 text-blue-400 font-bold hover:text-blue-300 transition-all underline decoration-blue-500/50">More Info</button>
             </div>
@@ -143,8 +152,12 @@
             <div class="glass p-10 rounded-[2.5rem] text-center flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
                 <div>
                     <div class="text-5xl mb-6">🔒</div>
-                    <h3 class="text-2xl font-bold mb-4">Rug-Proof Security</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">30% LP Burned. 60% Reserve Locked. 10% Founder stash locked.</p>
+                    <h3 class="text-2xl font-bold mb-6">Rug-Proof Security</h3>
+                    <ul class="token-list text-slate-400 text-lg">
+                        <li>30% LP tokens burned</li>
+                        <li>60% Reserve locked</li>
+                        <li>10% Founder stash locked</li>
+                    </ul>
                 </div>
                 <button onclick="openModal()" class="mt-8 text-blue-400 font-bold hover:text-blue-300 transition-all underline decoration-blue-500/50">More Info</button>
             </div>
@@ -174,15 +187,13 @@
             modalOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
-        // Close on clicking outside content
         modalOverlay.onclick = (e) => { if(e.target === modalOverlay) closeModal(); };
 
-        // Mobile Menu Logic
+        // Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-
         function toggleMenu() {
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
