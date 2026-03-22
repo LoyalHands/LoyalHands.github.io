@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Force-prevent horizontal scroll */
         html, body { 
             max-width: 100%;
             overflow-x: hidden;
@@ -21,12 +20,19 @@
 
         .hero-glow {
             background: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #020617 100%);
+            background-attachment: fixed;
         }
 
         .glass { 
             background: rgba(30, 41, 59, 0.4); 
             backdrop-filter: blur(12px); 
             border: 1px solid rgba(255, 255, 255, 0.08); 
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .glass:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
         }
 
         .text-gradient {
@@ -37,12 +43,18 @@
 
         /* Mobile Menu Animation */
         #mobile-menu {
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
         }
         #mobile-menu.active {
             transform: translateX(0);
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        .float-anim { animation: float 5s ease-in-out infinite; }
     </style>
 </head>
 <body class="hero-glow">
@@ -56,55 +68,90 @@
             <a href="https://x.com" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full text-sm font-bold transition">Twitter</a>
         </div>
 
-        <button id="menu-btn" class="md:hidden text-blue-500 focus:outline-none p-2">
+        <button id="menu-btn" class="md:hidden text-blue-500 p-2 focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
         </button>
     </nav>
 
-    <div id="mobile-menu" class="fixed inset-0 z-[150] bg-slate-950 flex flex-col items-center justify-center space-y-8 text-2xl font-bold md:hidden">
+    <div id="mobile-menu" class="fixed inset-0 z-[150] bg-slate-950/fb flex flex-col items-center justify-center space-y-10 text-3xl font-bold md:hidden">
         <button id="close-menu" class="absolute top-6 right-6 text-slate-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#tokenomics" class="mobile-link">Tokenomics</a>
-        <a href="https://x.com" class="text-blue-500">Twitter</a>
+        <a href="#about" class="mobile-link hover:text-blue-500">About</a>
+        <a href="#tokenomics" class="mobile-link hover:text-blue-500">Tokenomics</a>
+        <a href="https://t.me" class="mobile-link text-blue-500">Join Telegram</a>
     </div>
 
-    <header class="max-w-full overflow-hidden text-center pt-16 pb-24 px-6">
-        <img src="logo.png" alt="LOHA Logo" class="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full border-4 border-blue-500 shadow-lg shadow-blue-500/20">
+    <header id="about" class="max-w-5xl mx-auto text-center pt-16 md:pt-24 pb-24 px-6">
+        <div class="float-anim inline-block">
+            <img src="logo.png" alt="LOHA Logo" class="w-32 h-32 md:w-44 md:h-44 mx-auto mb-10 rounded-full border-4 border-blue-500 shadow-[0_0_40px_rgba(59,130,246,0.3)]">
+        </div>
         
-        <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight px-2" data-aos="fade-up">
+        <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight" data-aos="fade-up">
             Stop chasing pumps, <br>
             <span class="text-gradient">start earning loyalty.</span>
         </h1>
         
-        <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-            2% monthly rewards for every diamond hand holder.
+        <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+            The only memecoin that pays you to stay. <br> 
+            <span class="text-white font-semibold">2% monthly rewards</span> for every diamond hand holder.
         </p>
         
-        <div class="flex flex-col sm:flex-row justify-center gap-4 px-4" data-aos="zoom-in">
-            <a href="#" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg">Buy $LOHA</a>
-            <a href="#" class="glass px-8 py-4 rounded-xl font-bold text-lg">Join Telegram</a>
+        <div class="flex flex-col sm:flex-row justify-center gap-6" data-aos="zoom-in" data-aos-delay="200">
+            <a href="#" class="bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-lg active:scale-95">Buy $LOHA</a>
+            <a href="https://t.me" target="_blank" class="glass px-10 py-5 rounded-2xl font-bold text-xl transition-all hover:bg-slate-800 active:scale-95">Join Telegram</a>
         </div>
     </header>
 
-    <section id="tokenomics" class="max-w-6xl mx-auto py-16 px-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass p-8 rounded-3xl text-center" data-aos="fade-up">
-                <div class="text-4xl mb-4">💎</div>
-                <h3 class="text-xl font-bold mb-2">Monthly Payday</h3>
-                <p class="text-slate-400 text-sm">2% bonus from our locked reserve.</p>
+    <section id="tokenomics" class="max-w-6xl mx-auto py-20 px-6">
+        <h2 class="text-4xl md:text-5xl font-black text-center mb-16" data-aos="fade-down">The Loyalty Loop</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-5xl mb-6">💎</div>
+                <h3 class="text-2xl font-bold mb-4">Monthly Payday</h3>
+                <p class="text-slate-400 leading-relaxed">Every 30 days, Loyalty is rewarded. Holders receive a <span class="text-white font-bold">2% bonus</span> from our locked reserve.</p>
             </div>
+
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-5xl mb-6">🛡️</div>
+                <h3 class="text-2xl font-bold mb-4">10% Sell Tax</h3>
+                <p class="text-slate-400 leading-relaxed text-sm md:text-base">Paper hands pay you: <br> 5% Reflections (for holders) <br> 2% Burn <br> 3% Community Marketing Fund.</p>
             </div>
+
+            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-5xl mb-6">🔒</div>
+                <h3 class="text-2xl font-bold mb-4">Rug-Proof Security</h3>
+                <p class="text-slate-400 leading-relaxed">30% LP Burned. 60% Reserve Locked. 10% Founder stash locked for 12 months.</p>
+            </div>
+        </div>
     </section>
+
+    <section class="max-w-4xl mx-auto py-20 px-6 text-center" data-aos="zoom-out">
+        <div class="glass p-10 md:p-16 rounded-[3rem] border-blue-500/30">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">Built for the Long Haul</h2>
+            <p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed">
+                Most memecoins die in 48 hours. $LOHA is programmed to last years. Our 60% reserve ensures that even if volume is low, our loyal holders are still getting paid.
+            </p>
+            <div class="text-sm font-mono text-blue-400 bg-blue-950/30 p-5 rounded-xl break-all border border-blue-500/20">
+                Contract: COMING SOON
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-16 text-center text-slate-500 border-t border-slate-900 bg-slate-950/50">
+        <div class="text-xl font-black mb-4">LOYAL<span class="text-blue-500">HANDS</span></div>
+        <p>© 2026 LoyalHands ($LOHA). All Rights Reserved.</p>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // Initialize Animations
+        AOS.init({ duration: 1000, once: true, offset: 50 });
 
         // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
@@ -114,16 +161,14 @@
 
         function toggleMenu() {
             mobileMenu.classList.toggle('active');
-            // Prevent scrolling when menu is open
             document.body.classList.toggle('overflow-hidden');
         }
 
-        menuBtn.addEventListener('click', toggleMenu);
-        closeBtn.addEventListener('click', toggleMenu);
+        menuBtn.onclick = toggleMenu;
+        closeBtn.onclick = toggleMenu;
 
-        // Close menu when a link is clicked
         mobileLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
+            link.onclick = toggleMenu;
         });
     </script>
 </body>
