@@ -18,10 +18,22 @@
         .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .text-gradient { background: linear-gradient(to right, #60a5fa, #3b82f6, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .bonus-highlight {
-            background-color: rgba(59, 130, 246, 0.2);
-            padding: 0 4px;
-            border-radius: 4px;
+        /* Modal Animation Styles */
+        #modal-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            visibility: hidden;
+            opacity: 0;
+        }
+        #modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        #modal-content {
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: scale(0.7);
+        }
+        #modal-overlay.active #modal-content {
+            transform: scale(1);
         }
 
         #mobile-menu {
@@ -33,14 +45,21 @@
         #mobile-menu.active { transform: translateX(0); }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         .float-anim { animation: float 5s ease-in-out infinite; }
-
-        /* Bullet Point Styling */
-        .token-list { text-align: left; display: inline-block; }
-        .token-list li { margin-bottom: 8px; position: relative; padding-left: 20px; }
-        .token-list li::before { content: "•"; color: #3b82f6; position: absolute; left: 0; font-weight: bold; }
     </style>
 </head>
 <body class="hero-glow">
+
+    <div id="modal-overlay" class="fixed inset-0 z-[200] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-6">
+        <div id="modal-content" class="glass max-w-sm w-full p-10 rounded-[2.5rem] text-center relative border-blue-500/30">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <h3 class="text-3xl font-black mb-4 text-gradient">Information</h3>
+            <p class="text-xl text-slate-300">test</p>
+        </div>
+    </div>
 
     <nav class="flex justify-between items-center p-4 md:p-6 max-w-6xl mx-auto sticky top-0 z-[100] glass mt-4 rounded-2xl mx-4">
         <div class="text-xl md:text-2xl font-black tracking-tighter">LOYAL<span class="text-blue-500">HANDS</span></div>
@@ -101,34 +120,33 @@
         <h2 class="text-4xl md:text-5xl font-black text-center mb-16" data-aos="fade-down">The Loyalty Loop</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-5xl mb-6">💎</div>
-                <h3 class="text-2xl font-bold mb-6">Monthly Payday</h3>
-                <ul class="token-list text-slate-400">
-                    <li>Rewards for diamond holders</li>
-                    <li>Automatic monthly distribution</li>
-                    <li><span class="bonus-highlight"><b><u>2% bonus</u></b></span> from locked reserve</li>
-                </ul>
+            <div class="glass p-10 rounded-[2.5rem] text-center flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <div class="text-5xl mb-6">💎</div>
+                    <h3 class="text-2xl font-bold mb-4">Monthly Payday</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        Every 30 days, Loyalty is rewarded. Holders receive a <span class="text-white"><b><u>2% bonus</u></b></span> from our locked reserve.
+                    </p>
+                </div>
+                <button onclick="openModal()" class="mt-8 text-blue-400 font-bold hover:text-blue-300 transition-all underline decoration-blue-500/50">More Info</button>
             </div>
             
-            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-5xl mb-6">🛡️</div>
-                <h3 class="text-2xl font-bold mb-6">10% Sell Tax</h3>
-                <ul class="token-list text-slate-400">
-                    <li>5% Reflections to holders</li>
-                    <li>2% Automatic Burn</li>
-                    <li>3% Community Marketing</li>
-                </ul>
+            <div class="glass p-10 rounded-[2.5rem] text-center flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                <div>
+                    <div class="text-5xl mb-6">🛡️</div>
+                    <h3 class="text-2xl font-bold mb-4">10% Sell Tax</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">5% Reflections (for holders) | 2% Burn | 3% Marketing Fund</p>
+                </div>
+                <button onclick="openModal()" class="mt-8 text-blue-400 font-bold hover:text-blue-300 transition-all underline decoration-blue-500/50">More Info</button>
             </div>
             
-            <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
-                <div class="text-5xl mb-6">🔒</div>
-                <h3 class="text-2xl font-bold mb-6">Rug-Proof</h3>
-                <ul class="token-list text-slate-400">
-                    <li>30% LP tokens burned</li>
-                    <li>60% Reserve locked</li>
-                    <li>10% Stash locked 12 months</li>
-                </ul>
+            <div class="glass p-10 rounded-[2.5rem] text-center flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                <div>
+                    <div class="text-5xl mb-6">🔒</div>
+                    <h3 class="text-2xl font-bold mb-4">Rug-Proof Security</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">30% LP Burned. 60% Reserve Locked. 10% Founder stash locked.</p>
+                </div>
+                <button onclick="openModal()" class="mt-8 text-blue-400 font-bold hover:text-blue-300 transition-all underline decoration-blue-500/50">More Info</button>
             </div>
 
         </div>
@@ -145,10 +163,26 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        // Modal Logic
+        const modalOverlay = document.getElementById('modal-overlay');
+        function openModal() {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        // Close on clicking outside content
+        modalOverlay.onclick = (e) => { if(e.target === modalOverlay) closeModal(); };
+
+        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
+
         function toggleMenu() {
             mobileMenu.classList.toggle('active');
             document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
