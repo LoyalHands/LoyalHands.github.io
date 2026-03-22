@@ -10,144 +10,95 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Core Reset to prevent the "Wobble" */
         html, body { 
-            max-width: 100%;
-            overflow-x: hidden;
-            background-color: #020617; 
-            color: #f8fafc; 
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
+            max-width: 100%; overflow-x: hidden;
+            background-color: #020617; color: #f8fafc; font-family: 'Inter', sans-serif;
         }
-
-        .hero-glow {
-            background: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #020617 100%);
-            background-attachment: fixed;
-        }
-
-        .glass { 
-            background: rgba(30, 41, 59, 0.4); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, #60a5fa, #3b82f6, #2563eb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* NEW: High-Contrast Mobile Menu Styles */
+        .hero-glow { background: radial-gradient(circle at 50% 50%, #1e3a8a 0%, #020617 100%); background-attachment: fixed; }
+        .glass { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .text-gradient { background: linear-gradient(to right, #60a5fa, #3b82f6, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
         #mobile-menu {
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform: translateX(100%);
-            background-color: #020617; /* Solid Dark Background */
+            background-color: #020617;
             background-image: radial-gradient(circle at top right, #1e3a8a 0%, #020617 100%);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
         }
-
-        #mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-link {
-            color: #f8fafc;
-            font-weight: 800;
-            transition: color 0.3s;
-        }
-
-        /* Floating Animation for Logo */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
+        #mobile-menu.active { transform: translateX(0); }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
         .float-anim { animation: float 5s ease-in-out infinite; }
     </style>
 </head>
 <body class="hero-glow">
 
-    <nav class="flex justify-between items-center p-4 md:p-6 max-w-6xl mx-auto sticky top-0 z-[100] glass mt-2 md:mt-4 rounded-2xl mx-4">
+    <nav class="flex justify-between items-center p-4 md:p-6 max-w-6xl mx-auto sticky top-0 z-[100] glass mt-4 rounded-2xl mx-4">
         <div class="text-xl md:text-2xl font-black tracking-tighter">LOYAL<span class="text-blue-500">HANDS</span></div>
-        
         <div class="space-x-8 hidden md:flex items-center">
             <a href="#about" class="hover:text-blue-400 font-medium transition">About</a>
+            <a href="#chart" class="hover:text-blue-400 font-medium transition">Chart</a>
             <a href="#tokenomics" class="hover:text-blue-400 font-medium transition">Tokenomics</a>
             <a href="https://x.com" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full text-sm font-bold transition">Twitter</a>
         </div>
-
-        <button id="menu-btn" class="md:hidden text-blue-500 p-2 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
-        </button>
+        <button id="menu-btn" class="md:hidden text-blue-500 p-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button>
     </nav>
 
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[150] flex flex-col items-center justify-center space-y-10 text-3xl md:hidden">
-        <button id="close-menu" class="absolute top-8 right-8 text-slate-400">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
+        <button id="close-menu" class="absolute top-8 right-8 text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
         <a href="#about" class="mobile-link">ABOUT</a>
+        <a href="#chart" class="mobile-link">CHART</a>
         <a href="#tokenomics" class="mobile-link">TOKENOMICS</a>
-        <a href="https://x.com" target="_blank" class="mobile-link">TWITTER</a>
         <a href="https://t.me" target="_blank" class="bg-blue-600 px-10 py-4 rounded-2xl text-xl font-bold text-white">JOIN TELEGRAM</a>
     </div>
 
-    <header id="about" class="max-w-5xl mx-auto text-center pt-16 md:pt-24 pb-24 px-6">
-        <div class="float-anim inline-block">
-            <img src="logo.png" alt="LOHA Logo" class="w-32 h-32 md:w-44 md:h-44 mx-auto mb-10 rounded-full border-4 border-blue-500 shadow-[0_0_40px_rgba(59,130,246,0.3)]">
-        </div>
-        
-        <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight px-2" data-aos="fade-up">
-            Stop chasing pumps, <br>
-            <span class="text-gradient">start earning loyalty.</span>
-        </h1>
-        
-        <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-            The only memecoin that pays you to stay. <br> 
-            <span class="text-white font-semibold">2% monthly rewards</span> for every diamond hand holder.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row justify-center gap-6 px-4" data-aos="zoom-in" data-aos-delay="200">
-            <a href="#" class="bg-blue-600 hover:bg-blue-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-lg active:scale-95">Buy $LOHA</a>
-            <a href="https://t.me" target="_blank" class="glass px-10 py-5 rounded-2xl font-bold text-xl transition-all hover:bg-slate-800 active:scale-95">Join Telegram</a>
-        </div>
+    <header id="about" class="max-w-5xl mx-auto text-center pt-16 md:pt-24 pb-20 px-6">
+        <div class="float-anim inline-block"><img src="logo.png" alt="LOHA Logo" class="w-32 h-32 md:w-44 md:h-44 mx-auto mb-10 rounded-full border-4 border-blue-500"></div>
+        <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight px-2" data-aos="fade-up">Stop chasing pumps, <br><span class="text-gradient">start earning loyalty.</span></h1>
+        <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">2% monthly rewards for every diamond hand holder.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-6 px-4" data-aos="zoom-in"><a href="#" class="bg-blue-600 px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-lg">Buy $LOHA</a><a href="https://t.me" target="_blank" class="glass px-10 py-5 rounded-2xl font-bold text-xl transition-all">Join Telegram</a></div>
     </header>
+
+    <section id="chart" class="max-w-6xl mx-auto py-10 px-6" data-aos="fade-up">
+        <div class="glass p-2 md:p-4 rounded-[2.5rem] overflow-hidden h-[400px] md:h-[600px] relative">
+            <div class="tradingview-widget-container" style="height:100%;width:100%">
+                <div id="tradingview_chart" style="height:calc(100% - 32px);width:100%"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "BINANCE:SHIBUSDT",
+                    "interval": "D",
+                    "timezone": "Etc/UTC",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "toolbar_bg": "#f1f3f6",
+                    "enable_publishing": false,
+                    "hide_side_toolbar": false,
+                    "allow_symbol_change": true,
+                    "container_id": "tradingview_chart"
+                });
+                </script>
+            </div>
+            </div>
+    </section>
 
     <section id="tokenomics" class="max-w-6xl mx-auto py-20 px-6">
         <h2 class="text-4xl md:text-5xl font-black text-center mb-16" data-aos="fade-down">The Loyalty Loop</h2>
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="text-5xl mb-6">💎</div>
                 <h3 class="text-2xl font-bold mb-4">Monthly Payday</h3>
-                <p class="text-slate-400 leading-relaxed">Every 30 days, Loyalty is rewarded. Holders receive a <span class="text-white font-bold">2% bonus</span> from our locked reserve.</p>
+                <p class="text-slate-400">Holders receive a 2% bonus from our locked reserve.</p>
             </div>
-
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-5xl mb-6">🛡️</div>
                 <h3 class="text-2xl font-bold mb-4">10% Sell Tax</h3>
-                <p class="text-slate-400 leading-relaxed">Paper hands pay you: <br> 5% Reflections (for holders) <br> 2% Burn <br> 3% Community Marketing Fund.</p>
+                <p class="text-slate-400">5% Reflections | 2% Burn | 3% Marketing.</p>
             </div>
-
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="text-5xl mb-6">🔒</div>
-                <h3 class="text-2xl font-bold mb-4">Rug-Proof Security</h3>
-                <p class="text-slate-400 leading-relaxed">30% LP Burned. 60% Reserve Locked. 10% Founder stash locked for 12 months.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="max-w-4xl mx-auto py-20 px-6 text-center" data-aos="zoom-out">
-        <div class="glass p-10 md:p-16 rounded-[3rem] border-blue-500/30">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8">Built for the Long Haul</h2>
-            <p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed">
-                Most memecoins die in 48 hours. $LOHA is programmed to last years. Our 60% reserve ensures that even if volume is low, our loyal holders are still getting paid.
-            </p>
-            <div class="text-sm font-mono text-blue-400 bg-blue-950/30 p-5 rounded-xl break-all border border-blue-500/20">
-                Contract: COMING SOON
+                <h3 class="text-2xl font-bold mb-4">Rug-Proof</h3>
+                <p class="text-slate-400">30% LP Burned. 60% Reserve Locked. 10% Founder stash.</p>
             </div>
         </div>
     </section>
@@ -160,24 +111,11 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 50 });
-
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('active');
-            // This stops the background from scrolling while menu is open
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
-        }
-
-        menuBtn.onclick = toggleMenu;
-        closeBtn.onclick = toggleMenu;
-
-        mobileLinks.forEach(link => {
-            link.onclick = toggleMenu;
-        });
+        menuBtn.onclick = () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; };
+        closeBtn.onclick = () => { mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; };
     </script>
 </body>
 </html>
