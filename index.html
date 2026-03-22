@@ -39,11 +39,19 @@
             <a href="#tokenomics" class="hover:text-blue-400 font-medium transition">Tokenomics</a>
             <a href="https://x.com" target="_blank" class="bg-blue-600 hover:bg-blue-500 px-5 py-2 rounded-full text-sm font-bold transition">Twitter</a>
         </div>
-        <button id="menu-btn" class="md:hidden text-blue-500 p-2"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg></button>
+        <button id="menu-btn" class="md:hidden text-blue-500 p-2 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
     </nav>
 
     <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full z-[150] flex flex-col items-center justify-center space-y-10 text-3xl md:hidden">
-        <button id="close-menu" class="absolute top-8 right-8 text-slate-400"><svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg></button>
+        <button id="close-menu" class="absolute top-8 right-8 text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
         <a href="#about" class="mobile-link">ABOUT</a>
         <a href="#chart" class="mobile-link">CHART</a>
         <a href="#tokenomics" class="mobile-link">TOKENOMICS</a>
@@ -54,11 +62,18 @@
         <div class="float-anim inline-block"><img src="logo.png" alt="LOHA Logo" class="w-32 h-32 md:w-44 md:h-44 mx-auto mb-10 rounded-full border-4 border-blue-500"></div>
         <h1 class="text-4xl md:text-7xl font-black mb-8 leading-tight px-2" data-aos="fade-up">Stop chasing pumps, <br><span class="text-gradient">start earning loyalty.</span></h1>
         <p class="text-lg md:text-2xl text-slate-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">2% monthly rewards for every diamond hand holder.</p>
-        <div class="flex flex-col sm:flex-row justify-center gap-6 px-4" data-aos="zoom-in"><a href="#" class="bg-blue-600 px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-lg">Buy $LOHA</a><a href="https://t.me" target="_blank" class="glass px-10 py-5 rounded-2xl font-bold text-xl transition-all">Join Telegram</a></div>
+        <div class="flex flex-col sm:flex-row justify-center gap-6 px-4" data-aos="zoom-in">
+            <a href="#" class="bg-blue-600 px-10 py-5 rounded-2xl font-bold text-xl transition-all shadow-lg active:scale-95">Buy $LOHA</a>
+            <a href="https://t.me" target="_blank" class="glass px-10 py-5 rounded-2xl font-bold text-xl transition-all">Join Telegram</a>
+        </div>
     </header>
 
     <section id="chart" class="max-w-6xl mx-auto py-10 px-6" data-aos="fade-up">
-        <div class="glass p-2 md:p-4 rounded-[2.5rem] overflow-hidden h-[400px] md:h-[600px] relative">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl md:text-4xl font-black">Market Performance</h2>
+            <p class="text-slate-400 mt-2">Real-time data for the ecosystem</p>
+        </div>
+        <div class="glass p-2 md:p-4 rounded-[2.5rem] overflow-hidden h-[450px] md:h-[650px] relative">
             <div class="tradingview-widget-container" style="height:100%;width:100%">
                 <div id="tradingview_chart" style="height:calc(100% - 32px);width:100%"></div>
                 <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
@@ -79,7 +94,7 @@
                 });
                 </script>
             </div>
-            </div>
+        </div>
     </section>
 
     <section id="tokenomics" class="max-w-6xl mx-auto py-20 px-6">
@@ -88,34 +103,50 @@
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="100">
                 <div class="text-5xl mb-6">💎</div>
                 <h3 class="text-2xl font-bold mb-4">Monthly Payday</h3>
-                <p class="text-slate-400">Holders receive a 2% bonus from our locked reserve.</p>
+                <p class="text-slate-400 leading-relaxed">Holders receive a 2% bonus from our locked reserve every 30 days.</p>
             </div>
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="text-5xl mb-6">🛡️</div>
                 <h3 class="text-2xl font-bold mb-4">10% Sell Tax</h3>
-                <p class="text-slate-400">5% Reflections | 2% Burn | 3% Community Marketing Fund</p>
+                <p class="text-slate-400 leading-relaxed">5% Reflections | 2% Burn | 3% Community Marketing Fund</p>
             </div>
             <div class="glass p-10 rounded-[2.5rem] text-center" data-aos="fade-up" data-aos-delay="300">
                 <div class="text-5xl mb-6">🔒</div>
                 <h3 class="text-2xl font-bold mb-4">Rug-Proof</h3>
-                <p class="text-slate-400">30% LP Burned. 60% Reserve Locked. 10% Stash Locked For 12 Months</p>
+                <p class="text-slate-400 leading-relaxed">30% LP Burned. 60% Reserve Locked. 10% Stash Locked For 12 Months</p>
             </div>
         </div>
     </section>
 
     <footer class="py-16 text-center text-slate-500 border-t border-slate-900 bg-slate-950/50">
         <div class="text-xl font-black mb-4">LOYAL<span class="text-blue-500">HANDS</span></div>
-        <p>© 2026 LoyalHands ($LOHA). All Rights Reserved.</p>
+        <p class="mb-2">© 2026 LoyalHands ($LOHA). All Rights Reserved.</p>
+        <p class="text-xs text-slate-600 px-4 max-w-xl mx-auto italic">Note: Market data displayed is for demonstration purposes. Always conduct your own research before investing.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialize Animations
         AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        // Mobile Menu Logic
         const menuBtn = document.getElementById('menu-btn');
         const closeBtn = document.getElementById('close-menu');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuBtn.onclick = () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; };
-        closeBtn.onclick = () => { mobileMenu.classList.remove('active'); document.body.style.overflow = 'auto'; };
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+        }
+
+        menuBtn.onclick = toggleMenu;
+        closeBtn.onclick = toggleMenu;
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.onclick = toggleMenu;
+        });
     </script>
 </body>
 </html>
